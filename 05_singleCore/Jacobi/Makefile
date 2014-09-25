@@ -18,7 +18,7 @@ ifeq ($(F90), gfortran)
 endif
 
 ifeq ($(F90), ifort)
-	OPTS := -Ofast -vec-report3 -simd -xhost
+	OPTS := -inline-level=0 -Ofast -vec-report3 -opt-report2 -simd -xHost
 endif
 
 FFLAGS = $(OPTS)
