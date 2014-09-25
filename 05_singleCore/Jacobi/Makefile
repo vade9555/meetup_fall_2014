@@ -27,7 +27,7 @@ LD = $(F90)
 .SUFFIXES:
 .SUFFIXES: .f90 .o
 
-all: wrong_loop_jacobi.exe jacobi.exe blocked_jacobi.exe
+all: wrong_loop_jacobi.exe jacobi.exe blocked_jacobi.exe simd_wrong_loop_jacobi.exe simd_jacobi.exe simd_blocked_jacobi.exe
 
 blocked_jacobi.exe: blocked_jacobi.o
 	$(LD) $(LDFLAGS) -o $(experiment)/$(@) $(experiment)/$^
@@ -37,6 +37,16 @@ wrong_loop_jacobi.exe: wrong_loop_jacobi.o
 
 jacobi.exe: jacobi.o
 	$(LD) $(LDFLAGS) -o $(experiment)/$(@) $(experiment)/$^
+
+simd_blocked_jacobi.exe: blocked_jacobi.o
+	$(LD) $(LDFLAGS) -o $(experiment)/$(@) $(experiment)/$^
+
+simd_wrong_loop_jacobi.exe: wrong_loop_jacobi.o
+	$(LD) $(LDFLAGS) -o $(experiment)/$(@) $(experiment)/$^
+
+simd_jacobi.exe: jacobi.o
+	$(LD) $(LDFLAGS) -o $(experiment)/$(@) $(experiment)/$^
+
 
 .f90.o:
 	-mkdir $(experiment)

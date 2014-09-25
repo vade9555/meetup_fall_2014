@@ -83,7 +83,6 @@ CONTAINS
        call system_clock(clock_start, clock_rate, clock_max)
        DO k = 1, km
           DO j = 1, jm
-             !DIR$ vector nontemporal
              !DIR$ SIMD
              DO i = 1, im
                 ! 6 flops, 6 loads one store

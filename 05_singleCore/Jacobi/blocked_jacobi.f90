@@ -93,7 +93,6 @@ CONTAINS
                 !loop on a block
                 DO k=ks, ke
                    DO j=js, je
-                      !DIR$ SIMD
                       DO i=is, ie
                          p(i, j, k, i_new) = oos * ( &
                               & p(i-1, j, k, i_old) + p(i+1, j, k, i_old) + &
